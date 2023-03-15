@@ -1,4 +1,13 @@
 # Maven package Java project Web App to Linux on Azure
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise Subscription (b876b352-3657-48e8-8c29-b53619f702dc)'
+    appType: 'webAppLinux'
+    WebAppName: 'springBootMaven'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'TOMCAT|9.0-jre8'
+    StartupCommand: 'java -jar /home/site/wwwroot/gs-spring-boot-0.1.0.jar --server.port=80'
 # Build your Java project and deploy it to Azure as a Linux web app
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
